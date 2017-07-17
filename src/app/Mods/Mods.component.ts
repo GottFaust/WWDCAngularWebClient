@@ -4,7 +4,8 @@ import {WWDCService} from "../Services/wwdc.service";
 
 @Component({
   selector: 'mod-component',
-  templateUrl: './Mods.component.html'
+  templateUrl: './Mods.component.html',
+  styleUrls: ['./Mods.component.css']
 })
 
 export class ModsComponent {
