@@ -1,9 +1,70 @@
 <md-card>
   <md-card-header>
-    <md-card-title>Base Weapon Stats</md-card-title>
-    <md-card-subtitle>Enter the weapon's stats here</md-card-subtitle>
+    <md-card-title>Weapon Details</md-card-title>
+    <md-card-subtitle>Base Values</md-card-subtitle>
   </md-card-header>
   <md-card-content>
-    TODO
+    <md-input-container>
+      <input mdInput [(ngModel)]="wwdcService.weapon.name" placeholder="Weapon's Name">
+    </md-input-container>
+    <div>
+    <md-select mdInput [(ngModel)]="wwdcService.weapon.mode" placeholder="Firing Mode">
+      <md-option *ngFor="let type of wwdcService.weaponModes" [value]="type">
+        {{type}}
+      </md-option>
+    </md-select>
+    </div>
+    <br/>
+    <div>
+    <md-select mdInput [(ngModel)]="wwdcService.weapon.damageType" placeholder="Damage Type">
+      <md-option *ngFor="let type of wwdcService.damageTypes" [value]="type">
+        {{type}}
+      </md-option>
+    </md-select>
+    </div>
+    <md-input-container *ngIf="wwdcService.weapon.damageType != 'Physical'">
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.baseDamage" placeholder="Base Damage">
+    </md-input-container>
+    <div *ngIf="wwdcService.weapon.damageType === 'Physical'">
+      <md-input-container>
+        <input type="number" mdInput [(ngModel)]="wwdcService.weapon.impactDamage" placeholder="Impact">
+      </md-input-container>
+      <md-input-container>
+        <input type="number" mdInput [(ngModel)]="wwdcService.weapon.punctureDamage" placeholder="Puncture">
+      </md-input-container>
+      <md-input-container>
+        <input type="number" mdInput [(ngModel)]="wwdcService.weapon.slashDamage" placeholder="Slash">
+      </md-input-container>
+    </div>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.fireRate" placeholder="Rate of Fire">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.magSize" placeholder="Magazine Size">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.totalAmmo" placeholder="Total Ammunition">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.reloadTime" placeholder="Reload Time">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.critChance" placeholder="Critical Chance">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.critDamage" placeholder="Critital Damage">
+    </md-input-container>
+    <md-input-container *ngIf="wwdcService.weapon.mode === 'Charge'">
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.chargeTime" placeholder="Charge Time">
+    </md-input-container>
+    <md-input-container *ngIf="wwdcService.weapon.mode === 'Burst'">
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.burstCount" placeholder="Shots per Burst">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.projectileCount" placeholder="Projectiles per Shot">
+    </md-input-container>
+    <md-input-container>
+      <input type="number" mdInput [(ngModel)]="wwdcService.weapon.statusChance" placeholder="Status Chance">
+    </md-input-container>
   </md-card-content>
 </md-card>

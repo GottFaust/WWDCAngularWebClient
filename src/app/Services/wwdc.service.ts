@@ -1,14 +1,14 @@
 import {Injectable} from "@angular/core";
 import {mod} from "../Model/mod";
 import {modEffect} from "../Model/modEffect";
+import {weapon} from "../Model/weapon";
 
 @Injectable()
 export class WWDCService {
 
+  /** Mod Variables **/
   modCount: number = 8;
-
   mods: mod[] = [];
-
   modTypes: string[] = [
     'DamageBonus',
     'FireDamage',
@@ -44,6 +44,8 @@ export class WWDCService {
     'FlatStatusBonus',
     'FlatMagBonus'];
 
+  /** Weapon Variables **/
+  weapon: weapon;
   damageTypes: string[] = [
     'Physical',
     'Impact',
@@ -59,8 +61,7 @@ export class WWDCService {
     'Radiation',
     'Corrosive',
     'Viral'];
-
-  weaponTypes: string[] = [
+  weaponModes: string[] = [
     'Burst',
     'Charge',
     'Continuous',
@@ -70,6 +71,8 @@ export class WWDCService {
     'Semi-Auto'];
 
   constructor(){
+
+    //Initialize the mods
     for(var _i = 0; _i < this.modCount; _i++){
 
       var modTitle: string = 'Mod ' + _i;
@@ -81,5 +84,8 @@ export class WWDCService {
 
       this.mods[_i] = new mod(modTitle, modName, effects)
     }
+
+    //Initialize the weapon
+    this.weapon = new weapon();
   }
 }
