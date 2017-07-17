@@ -1,18 +1,21 @@
 <md-card>
   <md-card-header>
-    <md-card-title>Mods</md-card-title>
-    <md-card-subtitle>Enter the mod details here</md-card-subtitle>
+    <md-card-title>{{mod.title}}</md-card-title>
+    <md-card-subtitle>{{mod.name}}</md-card-subtitle>
   </md-card-header>
   <md-card-content>
-    <md-grid-list cols="4">
-      <md-grid-tile *ngFor="let mod of mods">
-        <md-card>
-          <md-card-subtitle>{{mod.name}}</md-card-subtitle>
-        </md-card>
-        <md-card-content>
-          TODO
-        </md-card-content>
-      </md-grid-tile>
-    </md-grid-list>
+    <md-input-container>
+      <input mdInput [(ngModel)]="mod.name" placeholder="Mod's Name">
+    </md-input-container>
+    <div *ngFor="let effect of mod.effects" layout="row">
+      <md-select mdInput [(ngModel)]="effect.type" placeholder="Effect Type">
+        <md-option *ngFor="let type of wwdcService.modTypes" [value]="type">
+          {{type}}
+        </md-option>
+      </md-select>
+      <md-input-container>
+        <input type="number" mdInput [(ngModel)]="effect.value" placeholder="Effect Value">
+      </md-input-container>
+    </div>
   </md-card-content>
 </md-card>

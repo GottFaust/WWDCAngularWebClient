@@ -6,12 +6,12 @@
     <md-card-subtitle>Warframe Weapon Damage Calculator</md-card-subtitle>
   </md-card-header>
   <md-card-content>
-    <md-grid-list cols="6">
-      <md-grid-tile [colspan]="1">
+    <md-grid-list cols="5">
+      <md-grid-tile colspan="1" rowspan="2">
         <weapon-stats></weapon-stats>
       </md-grid-tile>
-      <md-grid-tile [colspan]="5">
-        <mods-grid></mods-grid>
+      <md-grid-tile *ngFor="let mod of wwdcService.mods">
+          <mod-component [mod]="mod" [wwdcService]="wwdcService"></mod-component>
       </md-grid-tile>
     </md-grid-list>
   </md-card-content>

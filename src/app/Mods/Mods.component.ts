@@ -1,19 +1,15 @@
-import {Component, OnInit} from "@angular/core";
-import {WWDCService} from "../Services/wwdc.service";
+import {Component, Input} from "@angular/core";
 import {mod} from "../Model/mod";
+import {WWDCService} from "../Services/wwdc.service";
 
 @Component({
-  selector: 'mods-grid',
+  selector: 'mod-component',
   templateUrl: './Mods.component.html'
 })
 
-export class ModsComponent implements OnInit {
+export class ModsComponent {
 
-  mods : mod[];
+  @Input() mod: mod;
+  @Input() wwdcService: WWDCService;
 
-  constructor(private wwdcService: WWDCService){}
-
-  ngOnInit(): void {
-    this.mods = this.wwdcService.mods;
-  }
 }
