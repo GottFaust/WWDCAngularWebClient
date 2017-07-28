@@ -8,13 +8,25 @@
     </md-card-subtitle>
   </div>
   <md-card-content>
-    <md-grid-list cols="5" rowHeight="1:1.2">
-      <md-grid-tile colspan="1" rowspan="2">
-        <weapon-stats></weapon-stats>
-      </md-grid-tile>
-      <md-grid-tile *ngFor="let mod of wwdcService.mods">
-          <mod-component [mod]="mod" [wwdcService]="wwdcService"></mod-component>
-      </md-grid-tile>
-    </md-grid-list>
+    <md-tab-group>
+      <md-tab label="Weapon Details">
+        <md-grid-list cols="5" rowHeight="1:0.2">
+          <md-grid-tile colspan="1" rowspan="11">
+            <weapon-stats></weapon-stats>
+          </md-grid-tile>
+          <md-grid-tile *ngFor="let mod of wwdcService.mods" rowspan="5">
+              <mod-component [mod]="mod" [wwdcService]="wwdcService"></mod-component>
+          </md-grid-tile>
+          <md-grid-tile colspan="5">
+            <div layout-align="center">
+              <button md-raised-button>Calculate</button>
+            </div>
+          </md-grid-tile>
+        </md-grid-list>
+      </md-tab>
+      <md-tab label="Calculation Results">
+        <result-component></result-component>
+      </md-tab>
+    </md-tab-group>
   </md-card-content>
 </md-card>

@@ -70,6 +70,9 @@ export class WWDCService {
     'Full-Auto (Bullet-Ramp)',
     'Semi-Auto'];
 
+  /** Results Variables **/
+  calcOutput: string = 'Nothing here yet...';
+
   constructor(){
 
     //Initialize the mods

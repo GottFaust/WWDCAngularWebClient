@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import {WeaponStatsComponent} from "./WeaponStats/WeaponStats.component";
 import {ModsComponent} from "./Mods/Mods.component";
 import {WWDCService} from "./Services/wwdc.service";
+import {ResultsComponent} from "./Results/Results.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     WeaponStatsComponent,
-    ModsComponent
+    ModsComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
