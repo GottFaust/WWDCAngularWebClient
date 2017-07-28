@@ -10,11 +10,11 @@
   <md-card-content>
     <md-tab-group>
       <md-tab label="Weapon Details">
-        <md-grid-list cols="5" rowHeight="1:0.2">
-          <md-grid-tile colspan="1" rowspan="11">
+        <md-grid-list cols="5" rowHeight="1:0.126">
+          <md-grid-tile colspan="1" rowspan="17">
             <weapon-stats></weapon-stats>
           </md-grid-tile>
-          <md-grid-tile *ngFor="let mod of wwdcService.mods" rowspan="5">
+          <md-grid-tile *ngFor="let mod of wwdcService.mods" rowspan="8">
               <mod-component [mod]="mod" [wwdcService]="wwdcService"></mod-component>
           </md-grid-tile>
           <md-grid-tile colspan="5">
