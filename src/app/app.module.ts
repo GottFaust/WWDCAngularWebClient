@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {WeaponStatsComponent} from "./WeaponStats/WeaponStats.component";
@@ -21,6 +22,7 @@ import {ResultsComponent} from "./Results/Results.component";
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MaterialModule
   ],
   providers: [WWDCService],

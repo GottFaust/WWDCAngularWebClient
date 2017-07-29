@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {mod} from "../Model/mod";
 import {modEffect} from "../Model/modEffect";
 import {weapon} from "../Model/weapon";
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class WWDCService {
@@ -73,7 +74,19 @@ export class WWDCService {
   /** Results Variables **/
   calcOutput: string = 'Nothing here yet...';
 
-  constructor(){
+  /** The http client **/
+  http: HttpClient;
+
+  /** The selected tab **/
+  selectedTab: number = 0;
+
+  /**
+   * Constructor
+   */
+  constructor(private htp: HttpClient){
+
+    //Initialize the http client
+    this.http = htp;
 
     //Initialize the mods
     for(var _i = 0; _i < this.modCount; _i++){
@@ -90,5 +103,27 @@ export class WWDCService {
 
     //Initialize the weapon
     this.weapon = new weapon();
+  }
+
+  /**
+   * Sends the data to the Spring REST service to calculate
+   */
+  calculate(){
+    //Select the output tab
+    this.selectedTab = 1;
+
+    //Setup the post body
+    const body = {
+      weapon: this.weapon,
+      mods: this.mods
+    };
+
+    //Do the actual post
+    this.http.post('http://localhost:8080/WWDC/api/calculate', body, {})
+      .subscribe(data => {
+        //Set the calcOutput to the results string from the response
+        this.calcOutput = data['results'];
+      }
+    );
   }
 }
