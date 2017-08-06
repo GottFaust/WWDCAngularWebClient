@@ -1,0 +1,32 @@
+<md-card>
+  <div layout-align="center" class="title-bar">
+    <md-card-title>
+      <h1>W W D C</h1>
+    </md-card-title>
+    <md-card-subtitle class="title-bar">
+      Warframe Weapon Damage Calculator
+    </md-card-subtitle>
+  </div>
+  <md-card-content>
+    <md-tab-group [(selectedIndex)]="wwdcService.selectedTab">
+      <md-tab label="Weapon Details">
+        <md-grid-list cols="5" rowHeight="1:0.126">
+          <md-grid-tile colspan="1" rowspan="17">
+            <weapon-stats></weapon-stats>
+          </md-grid-tile>
+          <md-grid-tile *ngFor="let mod of wwdcService.mods" rowspan="8">
+              <mod-component [mod]="mod" [wwdcService]="wwdcService"></mod-component>
+          </md-grid-tile>
+          <md-grid-tile colspan="5">
+            <div layout-align="center">
+              <button md-raised-button (click)="wwdcService.calculate()">Calculate</button>
+            </div>
+          </md-grid-tile>
+        </md-grid-list>
+      </md-tab>
+      <md-tab label="Calculation Results">
+        <result-component></result-component>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>
